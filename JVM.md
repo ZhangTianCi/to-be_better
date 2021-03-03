@@ -9,7 +9,7 @@
 
 3. 弱 WeakReference
 
-   ![弱引用](.\images\弱引用.png)只要遇到GC，就会被回收。
+   ![弱引用](./images/弱引用.png)只要遇到GC，就会被回收。
    如果有另外一个强引用指向他的时候，如果强引用消失，就不用管了。
    一般用在容器中
    <font color="red">WeakHashMap</font>
