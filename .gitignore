@@ -1,8 +1,13 @@
 # 忽略所有文件
-**/**
+*
+# 保留仓库文件忽略规则
+!/.gitignore
 # 保留所有.md文件
 !*.md
 # 保留图片文件
-!*.{png,jpg}
-# 保留仓库文件忽略规则
-!/.gitignore
+#   保留images文件夹
+!/images
+#   忽略images文件夹下的所有
+/images/*
+#   保留images文件夹下的图片文件
+!/images/*.png
