@@ -86,7 +86,7 @@ PC内存
 
 ![常见的垃圾回收器](./images/常见的垃圾回收器.png)
 
-1. Serial 年轻代 串行 标记清除
+1. Serial 年轻代 串行 Coping
 2. Serial Old 老年代 串行 整理压缩
 3. PS 年轻代 并行 Coping<吞吐量优先>
 4. PO老年代 并行 标记整理
