@@ -3,6 +3,8 @@
 # 保留仓库文件忽略规则
 !/.gitignore
 # 保留所有.md文件
+!/spring_cloud
+!/spring_cloud/*
 !*.md
 # 保留图片文件
 #   保留images文件夹
