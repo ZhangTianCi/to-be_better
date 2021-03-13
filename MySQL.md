@@ -157,3 +157,24 @@ like %XX
 
 1. 覆盖索引
 2. 排序ORDER BY（索引列）默认是asc，desc用不到索引，
+
+### 幻读
+
+在当前事务中,执行了Update语句后,前后的查询语句不符。数据从快照读变成了当前读.
+
+#### 解决方法
+
+查询语句添加for update（零件锁）。
+
+此时，其它的事务无法对锁定范围（where条件内的数据）内的数据进行插入。
+
+例如
+
+```sql
+-- 事务1
+select * from table where columnX = x for update;
+-- 事务2
+inser into table (column0,column1,column2,columnX)values(0,1,2,x);
+-- 如果事务2的cloumnx在事务1的范围内，则插入失败
+```
+
