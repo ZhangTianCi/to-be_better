@@ -38,7 +38,14 @@ mvn clean package -Dmaven.test.skip=true
 
 pom包添加slf4j的实现。然后添加相应的配置。
 
+```java
+// 设置环境变量 - 消除RocketMQ的运行时警告
+System.setProperty("rocketmq.client.logUseSlf4j","true");
+```
+
+
 ```xml
+<!-- pom.xml -->
 <dependency>
 	<groupId>org.slf4j</groupId>
 	<artifactId>slf4j-log4j12</artifactId>
@@ -52,6 +59,7 @@ pom包添加slf4j的实现。然后添加相应的配置。
 ```
 
 ```properties
+# log4j.properties
 log4j.rootLogger=INFO, console
 log4j.appender.console=org.apache.log4j.ConsoleAppender
 log4j.appender.console.layout=org.apache.log4j.PatternLayout
@@ -59,4 +67,11 @@ log4j.appender.console.layout.conversionPattern=%5p [%t] (%F:%L) - %m%n
 ```
 
 
+
+### 消息的顺序性
+
+1. 同一个Topic
+2. 同一个Queue
+3. 发送方保证顺序（单线程），并发送至一个Queue。异步发送无法保证顺序。
+4. 接收方用一个线程，消费一个Queue里的线程
 
